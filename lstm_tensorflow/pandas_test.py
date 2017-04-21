@@ -59,7 +59,7 @@ from lstm_model import train_model
 df_anime = pd.read_csv("file:///C:/Users/jaden/Documents/SYDE%20522/Data%20Set/anime.csv", header = 0);
 df_ratings = pd.read_csv("file:///C:/Users/jaden/Documents/SYDE%20522/Data%20Set/rating.csv", header = 0);
 
-df_ratings = df_ratings.head(100000) # for testing purposes only take the first 100000 ratings
+#df_ratings = df_ratings.head(100000) # for testing purposes only take the first 100000 ratings
 
 max_ratings = 200
 
@@ -78,6 +78,9 @@ def build_training_sequences(ratings_data):
         anime_list = [anime_id_column[x] for x in group.index if x != index_of_label]
 
         train_seqs.append([anime_list,label,len(anime_list)])
+
+        if name % 1000 == 0: #print once every 1000 users to show progress
+            print("User {0}/{1}".format(name, len(grouped)))
 
     #i = 0
     #while i < len(ratings_data.index):

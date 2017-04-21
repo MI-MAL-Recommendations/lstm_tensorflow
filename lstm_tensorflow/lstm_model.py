@@ -30,6 +30,6 @@ def train_model(train,test,vocab_size,sequence_chunk_size,n_epoch=2,n_units=128,
     # Training
     model = tflearn.DNN(net, clip_gradients=0., tensorboard_verbose=2)
     model.fit(trainX, trainY, validation_set=(testX, testY), show_metric=True,
-              batch_size=32,n_epoch=n_epoch)
+              batch_size=128,n_epoch=n_epoch)
 
     return model
