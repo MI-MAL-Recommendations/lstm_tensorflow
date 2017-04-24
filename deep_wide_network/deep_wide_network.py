@@ -25,6 +25,7 @@ import pandas as pd
 import tensorflow as tf
 import numpy as np
 from tensorflow.python.framework import graph_util
+import time
 
 
 COLUMNS = ["UserID", "AnimeID", "UserRating",
@@ -43,6 +44,7 @@ CATEGORICAL_COLUMNS = ["UserID", "AnimeID",
                        "Genre41", "Genre42",
                        "MediaType"]
 CONTINUOUS_COLUMNS = ["Episodes", "OverallRating", "ListMembership"]
+print ("Start:" + str(time.strftime("%H:%M:%S")))
 
 
 def build_estimator(model_dir, model_type, user_ids, anime_ids):
@@ -128,7 +130,8 @@ def input_fn(df):
 def train_and_eval(model_dir, model_type, train_steps, train_data, test_data):
     """Train and evaluate the model."""
     
-    df_all = pd.read_csv("file:///C:/Users/jaden/Documents/SYDE%20522/Data%20Set/data_user.csv", names = COLUMNS, nrows = 1000);
+    #df_all = pd.read_csv("file:///C:/Users/jaden/Documents/SYDE%20522/Data%20Set/data_user.csv", names = COLUMNS);
+    df_all = pd.read_csv("file:///C:/Users/jaden/Documents/SYDE%20522/Data%20Set/data_user.csv", names = COLUMNS, nrows = 100000);
 
     split_perc=0.9
     mask = np.random.rand(len(df_all)) < split_perc
@@ -146,10 +149,13 @@ def train_and_eval(model_dir, model_type, train_steps, train_data, test_data):
 
     m = build_estimator(model_dir, model_type, df_train['UserID'].max(), df_train['AnimeID'].max())
     # Still needs a monitor
+    print ("FitBegin:" + str(time.strftime("%H:%M:%S")))
     m.fit(input_fn=lambda: input_fn(df_train), steps=train_steps)
+    print ("FitEnd:" + str(time.strftime("%H:%M:%S")))
     results = m.evaluate(input_fn=lambda: input_fn(df_test), steps=1)
     for key in sorted(results):
         print("%s: %s" % (key, results[key]))
+    print ("End:" + str(time.strftime("%H:%M:%S")))
     #freeze_graph(m) #doesn't work
 
 def freeze_graph(model):
