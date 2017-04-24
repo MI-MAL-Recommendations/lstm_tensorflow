@@ -5,6 +5,8 @@ VisualStudioVersion = 14.0.24720.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "lstm_tensorflow", "lstm_tensorflow\lstm_tensorflow.pyproj", "{F67D02C0-11D0-44CF-AFA6-8EF90A530FFD}"
 EndProject
+Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "deep_wide_network", "deep_wide_network\deep_wide_network.pyproj", "{73F1839E-0A9F-4DC8-AD9A-F27592E632BF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -13,6 +15,8 @@ Global
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{F67D02C0-11D0-44CF-AFA6-8EF90A530FFD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{F67D02C0-11D0-44CF-AFA6-8EF90A530FFD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{73F1839E-0A9F-4DC8-AD9A-F27592E632BF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{73F1839E-0A9F-4DC8-AD9A-F27592E632BF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
